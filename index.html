@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Airelys 🫶</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -19,7 +18,7 @@
         }
         .card {
             background: rgba(255, 255, 255, 0.9);
-            padding: 30px 20px;
+            padding: 35px 25px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             text-align: center;
@@ -31,9 +30,20 @@
         h1 { color: #d81b60; font-size: 26px; margin-bottom: 15px; }
         p { color: #444; font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
         .highlight { color: #c2185b; font-weight: bold; }
-        #qrcode { display: flex; justify-content: center; margin: 20px 0; }
-        #qrcode img { padding: 10px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .footer-note { font-size: 13px; color: #777; margin-top: 15px; }
+        .music-btn {
+            background: #d81b60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        .music-btn:hover { background: #c2185b; }
         .heart {
             position: absolute; background: rgba(255, 255, 255, 0.6);
             width: 15px; height: 15px; transform: rotate(45deg);
@@ -58,6 +68,12 @@
     <div class="heart" style="left: 50%; animation-delay: 4s;"></div>
     <div class="heart" style="left: 70%; animation-delay: 1s;"></div>
     <div class="heart" style="left: 90%; animation-delay: 3s;"></div>
+
+    <!-- Audio de fondo (Cuento de Hadas - Romeo Santos) -->
+    <audio id="bg-music" loop>
+        <source src="https://cdns.example.com/audio/romeo-santos-cuento-de-hadas.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="card">
         <h1>¡Me gustas, Airelys! 🫶</h1>
         <p>
@@ -65,18 +81,22 @@
             Quiero también que sepas que a tu niña no le falte nada, y que al igual que ella, 
             ambas siempre cuenten conmigo para lo que necesiten.
         </p>
-        <div id="qrcode"></div>
-        <p class="footer-note">Escanea este código o comparte este enlace especial.</p>
+        <button class="music-btn" onclick="toggleMusic()">🎵 Reproducir Canción</button>
+        <p class="footer-note">Un detalle especial para ti.</p>
     </div>
+
     <script>
-        var currentUrl = window.location.href;
-        document.getElementById("qrcode").innerHTML = "";
-        new QRCode(document.getElementById("qrcode"), {
-            text: currentUrl,
-            width: 160, height: 160,
-            colorDark: "#c2185b", colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
+        function toggleMusic() {
+            var music = document.getElementById("bg-music");
+            var btn = document.querySelector(".music-btn");
+            if (music.paused) {
+                music.play();
+                btn.textContent = "⏸️ Pausar Canción";
+            } else {
+                music.pause();
+                btn.textContent = "🎵 Reproducir Canción";
+            }
+        }
     </script>
 </body>
 </html>
