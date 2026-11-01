@@ -17,7 +17,7 @@
             position: relative;
         }
         .card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             padding: 35px 25px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
@@ -31,20 +31,15 @@
         p { color: #444; font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
         .highlight { color: #c2185b; font-weight: bold; }
         .footer-note { font-size: 13px; color: #777; margin-top: 15px; }
-        .music-btn {
-            background: #d81b60;
-            color: white;
-            border: none;
-            padding: 12px 25px;
+        
+        /* Estilo mejorado para el reproductor nativo */
+        audio {
+            width: 100%;
+            margin: 15px 0 10px 0;
             border-radius: 25px;
-            font-size: 15px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.4);
-            transition: background 0.3s, transform 0.2s;
-            margin-top: 10px;
-            font-weight: bold;
+            outline: none;
         }
-        .music-btn:active { transform: scale(0.95); }
+
         .heart {
             position: absolute; background: rgba(255, 255, 255, 0.6);
             width: 15px; height: 15px; transform: rotate(45deg);
@@ -70,12 +65,6 @@
     <div class="heart" style="left: 70%; animation-delay: 1s;"></div>
     <div class="heart" style="left: 90%; animation-delay: 3s;"></div>
 
-    <!-- Enlace directo de audio compatible -->
-    <audio id="bg-music" loop>
-        <source src="https://actions.google.com/sounds/v1/ambiences/romantic_getaway.ogg" type="audio/ogg">
-        Tu navegador no soporta audio.
-    </audio>
-
     <div class="card">
         <h1>¡Me gustas, Airelys! 🫶</h1>
         <p>
@@ -84,22 +73,13 @@
             ambas siempre cuenten conmigo para lo que necesiten.
         </p>
         
-        <button class="music-btn" onclick="toggleMusic()">🎵 Reproducir Música</button>
+        <!-- Reproductor de audio nativo visible y funcional -->
+        <audio controls autoplay>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+
         <p class="footer-note">Un detalle especial para ti.</p>
     </div>
-
-    <script>
-        function toggleMusic() {
-            var music = document.getElementById("bg-music");
-            var btn = document.querySelector(".music-btn");
-            if (music.paused) {
-                music.play();
-                btn.textContent = "⏸️ Pausar Música";
-            } else {
-                music.pause();
-                btn.textContent = "🎵 Reproducir Música";
-            }
-        }
-    </script>
 </body>
 </html>
