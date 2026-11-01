@@ -32,11 +32,22 @@
         .highlight { color: #c2185b; font-weight: bold; }
         .footer-note { font-size: 13px; color: #777; margin-top: 15px; }
         
-        audio {
+        .video-container {
+            position: relative;
             width: 100%;
-            margin: 15px 0 10px 0;
-            border-radius: 25px;
-            outline: none;
+            height: 60px;
+            overflow: hidden;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 160px;
+            border: none;
         }
 
         .heart {
@@ -67,16 +78,15 @@
     <div class="card">
         <h1>¡Me gustas, Airelys! 🫶</h1>
         <p>
-            Hola. Quería decirte que <span class="highlight">me gustas muchísimo</span>. 
-            Quiero también que sepas que a tu niña no le falte nada, y que al igual que ella, 
-            ambas siempre cuenten conmigo para lo que necesiten.
+            Hola. Quería decirte que <span class="highlight">me gustas niña</span>. 
+            Quiero también que sepas que a tu niña no le faltara nada, y que al igual que ella, 
+            ambas siempre cuenten conmigo para lo que necesiten, Dime que si?.
         </p>
         
-        <!-- Reproductor de audio directo y funcional -->
-        <audio controls>
-            <source src="https://actions.google.com/sounds/v1/ambiences/romantic_getaway.ogg" type="audio/ogg">
-            Tu navegador no soporta el elemento de audio.
-        </audio>
+        <!-- Reproductor optimizado -->
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/n426k2Wj828?enablejsapi=1&autoplay=1" title="Música" allow="autoplay"></iframe>
+        </div>
 
         <p class="footer-note">Un detalle especial para ti.</p>
     </div>
